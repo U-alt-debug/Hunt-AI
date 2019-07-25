@@ -167,10 +167,11 @@ class Ui_MainWindow(object):
                                               "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">"+self.categories[2]+"</p></body></html>"))
 
     def get_image(self):
-        name = QtWidgets.QFileDialog.getOpenFileName()
+        name = QtWidgets.QFileDialog.getOpenFileName(
+            caption='Open File', directory='/home/can/test/', filter="Image Files(*.png *.jpg *.jpeg)")
         if name[0] is not None and name[0] != "":
             self.label.setPixmap(QtGui.QPixmap(name[0]).scaled(
-                350, 350, PyQt5.QtCore.Qt.KeepAspectRatio))
+                350, 350))  # PyQt5.QtCore.Qt.KeepAspectRatio))
             predicts = self.network.predict(name[0])
             self.progressBar.setProperty("value", predicts[0][1]*100)
             self.progressBar_2.setProperty("value", predicts[1][1]*100)
