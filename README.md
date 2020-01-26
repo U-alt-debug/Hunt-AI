@@ -15,7 +15,7 @@ Artificial Intelligence-based image recognition for products usually sold on e-c
 Shoe:
 
 <p align="center">
-  <img width="500" height="400" src="./cases/ayakkabi.png">
+  <img width="700" height="450" src="./cases/ayakkabi.png">
 </p>
 ![Shoe](./cases/ayakkabi.png "Logo Title Text 1")
 
