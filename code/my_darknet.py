@@ -2,6 +2,7 @@ from ctypes import *
 import math
 import random
 
+
 def sample(probs):
     s = sum(probs)
     probs = [a/s for a in probs]
@@ -12,16 +13,19 @@ def sample(probs):
             return i
     return len(probs)-1
 
+
 def c_array(ctype, values):
     arr = (ctype*len(values))()
     arr[:] = values
     return arr
+
 
 class BOX(Structure):
     _fields_ = [("x", c_float),
                 ("y", c_float),
                 ("w", c_float),
                 ("h", c_float)]
+
 
 class DETECTION(Structure):
     _fields_ = [("bbox", BOX),
@@ -38,14 +42,14 @@ class IMAGE(Structure):
                 ("c", c_int),
                 ("data", POINTER(c_float))]
 
+
 class METADATA(Structure):
     _fields_ = [("classes", c_int),
                 ("names", POINTER(c_char_p))]
 
-    
 
 #lib = CDLL("/home/pjreddie/documents/darknet/libdarknet.so", RTLD_GLOBAL)
-lib = CDLL("/home/can/darknet/libdarknet.so", RTLD_GLOBAL)
+lib = CDLL("/home/mertdgn/darknet-alexey/libdarknet.so", RTLD_GLOBAL)
 lib.network_width.argtypes = [c_void_p]
 lib.network_width.restype = c_int
 lib.network_height.argtypes = [c_void_p]
@@ -63,7 +67,8 @@ make_image.argtypes = [c_int, c_int, c_int]
 make_image.restype = IMAGE
 
 get_network_boxes = lib.get_network_boxes
-get_network_boxes.argtypes = [c_void_p, c_int, c_int, c_float, c_float, POINTER(c_int), c_int, POINTER(c_int)]
+get_network_boxes.argtypes = [c_void_p, c_int, c_int,
+                              c_float, c_float, POINTER(c_int), c_int, POINTER(c_int)]
 get_network_boxes.restype = POINTER(DETECTION)
 
 make_network_boxes = lib.make_network_boxes
@@ -114,6 +119,7 @@ predict_image = lib.network_predict_image
 predict_image.argtypes = [c_void_p, IMAGE]
 predict_image.restype = POINTER(c_float)
 
+
 def classify(net, meta, im):
     out = predict_image(net, im)
     res = []
@@ -122,42 +128,41 @@ def classify(net, meta, im):
     res = sorted(res, key=lambda x: -x[1])
     return res
 
+
 def detect(net, meta, image, thresh=.5, hier_thresh=.5, nms=.45):
     im = load_image(image, 0, 0)
     num = c_int(0)
     pnum = pointer(num)
     predict_image(net, im)
-    dets = get_network_boxes(net, im.w, im.h, thresh, hier_thresh, None, 0, pnum)
+    dets = get_network_boxes(net, im.w, im.h, thresh,
+                             hier_thresh, None, 0, pnum)
     num = pnum[0]
-    if (nms): do_nms_obj(dets, num, meta.classes, nms);
+    if (nms):
+        do_nms_obj(dets, num, meta.classes, nms)
 
     res = []
     for j in range(num):
         for i in range(meta.classes):
             if dets[j].prob[i] > 0:
                 b = dets[j].bbox
-                res.append((meta.names[i], dets[j].prob[i], (b.x, b.y, b.w, b.h)))
+                res.append(
+                    (meta.names[i], dets[j].prob[i], (b.x, b.y, b.w, b.h)))
     res = sorted(res, key=lambda x: -x[1])
     free_image(im)
     free_detections(dets, num)
     return res
-    
+
 
 if __name__ == "__main__":
-    # net = load_net(b"cfg/darknet19.cfg", b"/home/can/darknet/darknet19.weights", 0)
-    # im = load_image(b"/home/can/testimagesphone-glasses/phone.jpg", 0, 0)
-    # meta = load_meta(b"cfg/Zebramo.data")
-    # r = classify(net, meta, im)
-    # print (r[:10])
-    net = load_net(b"/home/can/Python/Zebra-AI/Dataset/Zebramo.cfg", b"/home/can/darknet/backup/Zebramo.backup", 0)
-    im = load_image(b"/home/can/testimagesphone-glasses/phone.jpg", 0, 0)
+
+    net = load_net(b"/home/mertdgn/Desktop/Hunt-UI/Dataset/Senior.cfg",
+                    b"/home/mertdgn/darknet/backup/Senior.backup", 0)
+    im = load_image(b"/home/mertdgn/Desktop/ayakkabi/1.png", 0, 0)
     #meta = load_meta(b"/home/can/darknet/cfg/Zebramo.data")
-    meta = load_meta(b"/home/can/Python/Zebra-AI/Dataset/Zebramo.data")
+    meta = load_meta(b"/home/mertdgn/Desktop/Hunt-UI/Senior.data")
     r = classify(net, meta, im)
-    print (r[:10])
+    print(r[:10])
     #net = load_net("cfg/tiny-yolo.cfg", "tiny-yolo.weights", 0)
     #meta = load_meta("cfg/coco.data")
     #r = detect(net, meta, "data/dog.jpg")
     #print (r)
-    
-

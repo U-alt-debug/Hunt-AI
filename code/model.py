@@ -12,6 +12,6 @@ class darknet:
 
 
 if __name__ == '__main__':
-    path_Cfg = "/home/can/Proje22temmuz/Zebramo.cfg"
-    path_Weights = "/home/can/Proje22temmuz/backup/Zebramo_4.weights"
-    path_Meta = "/home/can/Proje22temmuz/Zebramo.data"
+    path_Cfg = "/home/mertdgn/Desktop/Hunt-UI/Senior.cfg"
+    path_Weights = "/home/mertdgn/Desktop/Hunt-UI/Senior_6.weights"
+    path_Meta = "/home/mertdgn/Desktop/Hunt-UI/Senior.data"

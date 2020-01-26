@@ -1,0 +1,6 @@
+classes=31
+train = /home/mertdgn/Desktop/Hunt-UI/train.list
+valid = /home/mertdgn/Desktop/Hunt-UI/test.list
+labels = /home/mertdgn/Desktop/Hunt-UI/labels.txt
+backup = /home/mertdgn/Desktop/Hunt-UI/backup/
+top = 5
