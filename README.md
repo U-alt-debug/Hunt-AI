@@ -17,52 +17,75 @@ Shoe:
 <p align="center">
   <img width="700" height="450" src="./cases/ayakkabi.png">
 </p>
-![Shoe](./cases/ayakkabi.png "Logo Title Text 1")
 
 Pepper-gas:
 
-![Pepper](./cases/bibergazi.png "Logo Title Text 1")
+<p align="center">
+  <img width="700" height="450" src="./cases/bibergazi.png">
+</p>
 
 Cat:
 
-![Cat](./cases/cat.png "Logo Title Text 1")
+<p align="center">
+  <img width="700" height="450" src="./cases/cat.png">
+</p>
 
 Chair:
 
-![Chair](./cases/chair.png "Logo Title Text 1")
+<p align="center">
+  <img width="700" height="450" src="./cases/chair.png">
+</p>
 
 Dog:
 
-![Dog](./cases/dog.png "Logo Title Text 1")
+<p align="center">
+  <img width="700" height="450" src="./cases/dog.png">
+</p>
 
 Liquor:
 
-![Liquor](./cases/icki.png "Logo Title Text 1")
+<p align="center">
+  <img width="700" height="450" src="./cases/icki.png">
+</p>
 
 Drug:
 
-![Drug](./cases/ilac.png "Logo Title Text 1")
+<p align="center">
+  <img width="700" height="450" src="./cases/ilac.png">
+</p>
 
 Knife:
 
-![Knife](./cases/knife.png "Logo Title Text 1")
+<p align="center">
+  <img width="700" height="450" src="./cases/knife.png">
+</p>
 
 Cigarette box:
 
-![Cigarette](./cases/paket.png "Logo Title Text 1")
+<p align="center">
+  <img width="700" height="450" src="./cases/paket.png">
+</p>
 
 Pistol:
 
-![Pistol](./cases/tabanca.png "Logo Title Text 1")
+<p align="center">
+  <img width="700" height="450" src="./cases/tabanca.png">
+</p>
 
 Taser:
 
-![Taser](./cases/taser.png "Logo Title Text 1")
+<p align="center">
+  <img width="700" height="450" src="./cases/taser.png">
+</p>
 
 Rifle:
 
-![Rifle](./cases/tufek.png "Logo Title Text 1")
+<p align="center">
+  <img width="700" height="450" src="./cases/tufek.png">
+</p>
 
 Vaporizer (e-cigarette):
 
-![Vaporizer](./cases/vaporizer.png "Logo Title Text 1")
+<p align="center">
+  <img width="700" height="450" src="./cases/vaporizer.png">
+</p>
